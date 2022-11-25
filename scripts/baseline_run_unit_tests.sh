@@ -5,14 +5,14 @@
 ## SPDX-License-Identifier: BSD-3-Clause
 ## For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 ## '''##
-code_path=outputs/codes/
-output_path=outputs/test_results/
-test_path=/export/home/apps/data/APPS/test/
+code_path=outputs/greedy_codes/
+output_path=outputs/greedy_test_results/
+test_path=data/APPS/train/
 
 example_tests=0 # 0: run hidden unit tests; 1: run example unit tests
-start=0
-end=1
-threads=10
+start=2669
+end=5000
+threads=1
 
 if [ ! -d $output_path ]
 then
@@ -25,7 +25,7 @@ for (( i=$start;i<$end;i++ )) ; do
     echo 'testing sample index #' ${i}
     ((index++))
     (
-    python test_one_solution.py \
+    python baseline_test_one_solution.py \
         --code_path ${code_path} \
         --output_path ${output_path} \
         --test_path $test_path \
