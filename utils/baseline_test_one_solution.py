@@ -52,8 +52,8 @@ def eval_and_save_problems(args):
     if args.max_tests != -1 and nb_tests > args.max_tests:
         exit()
 
-    if os.path.isfile(args.output_path + '/{}.pkl'.format(real_index)):
-        exit()
+    # if os.path.isfile(args.output_path + '/{}.pkl'.format(real_index)):
+    #     exit()
 
     print("Saving to {}".format(args.output_path + '/{}.pkl'.format(real_index)))
 
@@ -90,6 +90,10 @@ def eval_and_save_problems(args):
         save_results = {real_index: {'results': all_results, 'errors': all_errors, 'sols': all_sols}}
         with open(args.output_path + '/{}.pkl'.format(real_index), "wb") as file:
             pkl.dump(save_results, file)
+
+        case_dir = '/' + '0' * (4 - len(str(real_index))) + str(real_index)
+        with open(args.test_path + case_dir + '/baseline_solutions.json', 'w') as fw:
+            json.dump({'codes': all_sols[0], 'result': all_results[0][0]}, fw)
 
     '''
     How to read results:
