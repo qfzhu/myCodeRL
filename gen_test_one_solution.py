@@ -20,7 +20,7 @@ from typing import List
 from utils.testing_util import run_test
 
 
-type_error_dict = {'-2': 'compile error', '-1': 'runtime error', 'False': 'failed test case', 'True': 'passed test case'}
+error_type_dict = {'-2': 'compile error', '-1': 'runtime error', 'False': 'failed test case', 'True': 'passed test case'}
 
 
 def eval_and_save_problems(args):
@@ -96,7 +96,7 @@ def eval_and_save_problems(args):
 
         case_dir = '/' + '0' * (4 - len(str(real_index))) + str(real_index)
         with open(args.test_path + case_dir + '/gen_solutions.json', 'w') as fw:
-            gen_list = [{'code': all_sols[i], 'result': all_results[i][0], 'error_type': type_error_dict[str(all_results[i][0])]}
+            gen_list = [{'code': all_sols[i], 'result': all_results[i][0], 'error_type': error_type_dict[str(all_results[i][0])]}
                         for i in range(len(all_results))]
             json.dump(gen_list, fw)
 
