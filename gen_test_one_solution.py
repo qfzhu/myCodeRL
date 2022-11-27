@@ -92,8 +92,10 @@ def eval_and_save_problems(args):
             pkl.dump(save_results, file)
 
         case_dir = '/' + '0' * (4 - len(str(real_index))) + str(real_index)
-        with open(args.test_path + case_dir + '/baseline_solutions.json', 'w') as fw:
-            json.dump({'codes': all_sols[0], 'result': all_results[0][0]}, fw)
+        with open(args.test_path + case_dir + '/gen_solutions.json', 'w') as fw:
+            gen_list = [{'code': all_sols[i], 'result': all_results[i][0], 'error_type': all_errors[i]}
+                        for i in range(len(all_results))]
+            json.dump(gen_list, fw)
 
     '''
     How to read results:
