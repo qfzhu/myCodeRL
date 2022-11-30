@@ -193,11 +193,9 @@ def main(args):
                 for i in tqdm(range(num_loops), ncols=0, total=num_loops, leave=False):
                     output_ids = model.generate(
                         input_ids,
-                        do_sample=True,
-                        temperature=args.temperature,
-                        max_length=args.max_len,
-                        num_return_sequences=args.num_seqs_per_iter,
-                        top_p=0.95)
+                        do_sample=False,
+                        num_beams=1,
+                        max_length=args.max_len)
 
                     for output_id in output_ids:
                         output_programs.append(tokenizer.decode(output_id, skip_special_tokens=True))
