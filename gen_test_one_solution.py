@@ -97,9 +97,9 @@ def eval_and_save_problems(args):
         case_dir = '/' + '0' * (4 - len(str(real_index))) + str(real_index)
         with open(args.test_path + case_dir + '/gen_solutions.json', 'w') as fw:
             # empty all_result bug
-            for i in range(len(all_sols)):
-                if not all_results[i]:
-                    all_results[i] = [-2]
+            # for i in range(len(all_sols)):
+            #     if not all_results[i]:
+            #         all_results[i] = [-2]
 
             gen_list = [{'code': all_sols[i], 'result': all_results[i][0], 'error_type': error_type_dict[str(all_results[i][0])]}
                         for i in range(len(all_results))]
