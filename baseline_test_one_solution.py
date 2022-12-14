@@ -93,7 +93,7 @@ def eval_and_save_problems(args):
 
         case_dir = '/' + '0' * (4 - len(str(real_index))) + str(real_index)
         with open(args.test_path + case_dir + '/baseline_solutions.json', 'w') as fw:
-            json.dump({'codes': all_sols[0], 'result': all_results[0][0]}, fw)
+            json.dump([{'codes': all_sols[0], 'result': all_results[0][0]}], fw)
 
     '''
     How to read results:
